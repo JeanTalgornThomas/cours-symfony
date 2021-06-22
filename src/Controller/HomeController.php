@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-class AchatsController extends AbstractController {
+class HomeController extends AbstractController {
 
   public function __construct(EntityManagerInterface $mysql)
   {
@@ -17,9 +17,9 @@ class AchatsController extends AbstractController {
   /**
    * @Route("/", name="home")
   */
-  function home(Request $request) {
-    return $this->render('boutiquesProduits.html.twig', [
-        'message' => 'Bienvenue'
+  function home() {
+    return $this->render('home.html.twig', [
+        'message' => 'Bienvenue à la SPA'
     ]);
   }
 

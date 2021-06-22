@@ -16,7 +16,7 @@ class AnimauxController extends AbstractController {
   }
 
   /**
-   * @Route("/showAnimaux", name="showAnimaux")
+   * @Route("/animaux", name="animaux")
   */
   function showAnimaux() {
     try
@@ -33,7 +33,7 @@ class AnimauxController extends AbstractController {
     if ($resultat != false)
     {
       return $this->render('animaux.html.twig', [
-        'animaux' => $animaux
+        'animaux' => $resultat
       ]);
     }
     else

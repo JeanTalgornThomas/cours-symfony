@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptez nous!{% endblock %}
+
+{% block body %}
+
+{% for res in resultat %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="">
+                <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p>res.nom</p>
+                </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
