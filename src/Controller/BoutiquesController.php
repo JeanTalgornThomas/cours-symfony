@@ -80,7 +80,7 @@ class BoutiquesController extends AbstractController {
     {
       $resultat = $this->mysql
       ->getRepository(Articles::class)
-      ->findBy(['type' => 'Produits']);
+      ->findBy(['type' => 'Jouer']);
     }
     catch ( Doctrine_Connection_Exception $e )
     {
