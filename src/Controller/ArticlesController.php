@@ -15,4 +15,30 @@ class ArticlesController extends AbstractController {
     $this->mysql = $mysql;
   }
 
+  /**
+   * @Route("/showArticles", name="showArticles")
+  */
+  function showArticles() {
+    try
+    {
+      $resultat = $this->mysql
+      ->getRepository(Articles::class)
+      ->findAll();
+    }
+    catch ( Doctrine_Connection_Exception $e )
+    {
+      return $resultat = false;
+    } 
+
+    if ($resultat != false) {
+      return $this->render('articles.html.twig', [
+        'articles' => $articles
+      ]);
+    }
+    else
+    {
+      return $this->redirectToRoute("home");
+    }
+  }
+
 }

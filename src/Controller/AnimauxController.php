@@ -15,4 +15,31 @@ class AnimauxController extends AbstractController {
     $this->mysql = $mysql;
   }
 
+  /**
+   * @Route("/showAnimaux", name="showAnimaux")
+  */
+  function showAnimaux() {
+    try
+    {
+      $resultat = $this->mysql
+      ->getRepository(Animaux::class)
+      ->findAll();
+    }
+    catch ( Doctrine_Connection_Exception $e )
+    {
+      return $resultat = false;
+    } 
+
+    if ($resultat != false)
+    {
+      return $this->render('animaux.html.twig', [
+        'animaux' => $animaux
+      ]);
+    }
+    else
+    {
+      return $this->redirectToRoute("home");
+    }
+  }
+
 }

@@ -15,4 +15,18 @@ class AchatsController extends AbstractController {
     $this->mysql = $mysql;
   }
 
+  /**
+   * @Route("/addAchats", name="addAchats")
+  */
+  function addAchats(Request $request) {
+    date_default_timezone_set('Europe/Paris');
+
+    $resultat = new Achats();
+    $resultat->setIdBoutiques(0);
+    $resultat->setIdUtilisateurs(0);
+    $resultat->setDate(new \DateTime());
+    $this->mysql->persist($resultat);
+    $this->mysql->flush();
+  }
+
 }
