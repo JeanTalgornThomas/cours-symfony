@@ -3,9 +3,9 @@
 {% block title %}Adoptez nous!{% endblock %}
 
 {% block body %}
-    {% for animal in animaux %}
     <div class="row">
-        <div class="col-md-4">
+    {% for animal in animaux %}
+        <div class="col-2">
             <div class="thumbnail">
                 <a href="{{ path('showOneAnimaux', {id: animal.id}) }}">
                     <img src="/images/animaux/{{animal.id}}.jpg" alt="{{animal.nom}}" style="width:100%">
@@ -15,6 +15,6 @@
                 </a>
             </div>
         </div>
-    </div>
     {% endfor %}
+    </div>
 {% endblock %}
