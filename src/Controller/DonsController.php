@@ -31,6 +31,9 @@ class DonsController extends AbstractController {
     if ($form->isSubmitted() && $form->isValid()) {
         $resultat = $form->getData();
 
+        $this->addFlash(
+          'Merci pour votre don!'
+        );
         return $this->redirectToRoute("home");
     }
 
