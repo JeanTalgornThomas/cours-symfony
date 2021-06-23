@@ -16,7 +16,7 @@ class ArticlesController extends AbstractController {
   }
 
   /**
-   * @Route("/showArticles", name="showArticles")
+   * @Route("/articles", name="articles")
   */
   function showArticles() {
     try
@@ -32,7 +32,7 @@ class ArticlesController extends AbstractController {
 
     if ($resultat != false) {
       return $this->render('articles.html.twig', [
-        'articles' => $articles
+        'articles' => $resultat
       ]);
     }
     else

@@ -34,7 +34,7 @@ class BoutiquesController extends AbstractController {
     if ($resultat != false) 
     {
       return $this->render('boutiquesNourritures.html.twig', [
-        'BoutiquesNourritures' => $BoutiquesNourritures
+        'BoutiquesNourritures' => $resultat
       ]);
     }
     else
