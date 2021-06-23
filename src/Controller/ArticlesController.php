@@ -16,7 +16,7 @@ class ArticlesController extends AbstractController {
   }
 
   /**
-   * @Route("/showArticles", name="showArticles")
+   * @Route("/articles", name="articles")
   */
   function showArticles() {
     try

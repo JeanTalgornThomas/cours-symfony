@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Boutique {% endblock %}
+
+{% block body %}
+<button><a href={{path('boutiquesNourritures')}}>Nourriture</a></button>
+<button><a href={{path('boutiquesAccessoires')}}>Accessoires</a></button>
+<button><a href={{path('boutiquesProduits')}}>Produits</a></button>
+{% endblock %}
