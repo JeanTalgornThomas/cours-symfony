@@ -16,7 +16,7 @@ class ArticlesController extends AbstractController {
   }
 
   /**
-   * @Route("/articles", name="articles")
+   * @Route("/showArticles", name="showArticles")
   */
   function showArticles() {
     try
@@ -32,6 +32,32 @@ class ArticlesController extends AbstractController {
 
     if ($resultat != false) {
       return $this->render('articles.html.twig', [
+        'articles' => $resultat
+      ]);
+    }
+    else
+    {
+      return $this->redirectToRoute("home");
+    }
+  }
+
+  /**
+   * @Route("/showOneArticles/{id}", name="showOneArticles")
+  */
+  function showOneArticles($id) {
+    try
+    {
+      $resultat = $this->mysql
+      ->getRepository(Articles::class)
+      ->findOneBy(['id' => $id]);
+    }
+    catch ( Doctrine_Connection_Exception $e )
+    {
+      return $resultat = false;
+    }
+
+    if ($resultat != false) {
+      return $this->render('showArticle.html.twig', [
         'articles' => $resultat
       ]);
     }

@@ -16,7 +16,7 @@ class AnimauxController extends AbstractController {
   }
 
   /**
-   * @Route("/animaux", name="animaux")
+   * @Route("/showAnimaux", name="showAnimaux")
   */
   function showAnimaux() {
     try
@@ -43,25 +43,29 @@ class AnimauxController extends AbstractController {
   }
 
   /**
-   * @Route("/animaux/{id}", name="animal")
+   * @Route("/showOneAnimaux/{id}", name="showOneAnimaux")
   */
-  function Animal(int $id) : Response {
-    try {
+  function showOneAnimaux($id) {
+    try
+    {
       $resultat = $this->mysql
       ->getRepository(Animaux::class)
-      ->find($id);
+      ->findOneBy(['id' => $id]);
     }
-    catch ( Doctrine_Connection_Exception $e ) {
+    catch ( Doctrine_Connection_Exception $e )
+    {
       return $resultat = false;
     }
 
     if ($resultat != false) {
-      return $this->render('animal.html.twig', [
+      return $this->render('showAnimaux.html.twig', [
         'animal' => $resultat
       ]);
     }
-    else {
+    else
+    {
       return $this->redirectToRoute("home");
     }
   }
+
 }

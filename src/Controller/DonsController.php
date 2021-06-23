@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
+use App\Form\DonsType;
 use App\Entity\Dons;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -16,9 +18,9 @@ class DonsController extends AbstractController {
   }
 
   /**
-   * @Route("/addAdoptions", name="addAdoptions")
+   * @Route("/addDons", name="addDons")
   */
-  function addAdoptions(Request $request) {
+  function addDons(Request $request) {
     date_default_timezone_set('Europe/Paris');
 
     $resultat = new Dons();
@@ -29,16 +31,10 @@ class DonsController extends AbstractController {
     if ($form->isSubmitted() && $form->isValid()) {
         $resultat = $form->getData();
 
-        $resultat->setIdAnimaux(0);
-        $resultat->setIdUtilisateurs(0);
-        $resultat->setDate(new \DateTime());
-        $this->mysql->persist($resultat);
-        $this->mysql->flush();
-
-        return $this->redirectToRoute("showAnimaux");
+        return $this->redirectToRoute("home");
     }
 
-    return $this->render("article/addAdoptions.html.twig", [
+    return $this->render("dons.html.twig", [
         'form' => $form->createView()
     ]);    
   }

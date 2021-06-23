@@ -1,1 +1,20 @@
-<h1> works? </h1>
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique : Produits{% endblock %}
+
+{% block body %}
+    {% for produit in boutiquesProduits %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href="{{ path('showOneBoutiques', {id: produit.id}) }}">
+                    <img src="/images/boutiques/{{ produit.id }}.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p>{{ produit.nom }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
