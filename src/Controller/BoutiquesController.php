@@ -78,7 +78,7 @@ class BoutiquesController extends AbstractController {
   }
 
   /**
-   * @Route("/boutiquesAccessoires", name="boutiquesAccessoires")
+   * @Route("/showBoutiquesAccessoires", name="boutiquesAccessoires")
   */
   function showBoutiquesAccessoires() 
   {
@@ -106,7 +106,7 @@ class BoutiquesController extends AbstractController {
   }
 
   /**
-   * @Route("/boutiquesProduits", name="boutiquesProduits")
+   * @Route("/showBoutiquesProduits", name="boutiquesProduits")
   */
   function showBoutiquesProduits() 
   {

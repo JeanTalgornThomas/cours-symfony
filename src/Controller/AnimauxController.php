@@ -16,7 +16,7 @@ class AnimauxController extends AbstractController {
   }
 
   /**
-   * @Route("/animaux", name="animaux")
+   * @Route("/showAnimaux", name="showAnimaux")
   */
   function showAnimaux() {
     try
