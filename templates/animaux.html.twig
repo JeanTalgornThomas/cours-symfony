@@ -3,18 +3,18 @@
 {% block title %}Adoptez nous!{% endblock %}
 
 {% block body %}
-
-{% for res in resultat %}
-<div class="row">
-    <div class="col-md-4">
-        <div class="thumbnail">
-            <a href="">
-                <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
-                <div class="caption">
-                    <p>res.nom</p>
-                </div>
+    {% for animal in animaux %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href="{{ path('showOneAnimaux', {id: animal.id}) }}">
+                    <img src="/images/animaux/{{ animal.id }}.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p>{{ animal.nom }}</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
 {% endblock %}

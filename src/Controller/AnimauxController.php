@@ -42,4 +42,30 @@ class AnimauxController extends AbstractController {
     }
   }
 
+  /**
+   * @Route("/showOneAnimaux/{id}", name="showOneAnimaux")
+  */
+  function showOneAnimaux($id) {
+    try
+    {
+      $resultat = $this->mysql
+      ->getRepository(Animaux::class)
+      ->findOneBy(['id' => $id]);
+    }
+    catch ( Doctrine_Connection_Exception $e )
+    {
+      return $resultat = false;
+    }
+
+    if ($resultat != false) {
+      return $this->render('showAnimaux.html.twig', [
+        'animal' => $resultat
+      ]);
+    }
+    else
+    {
+      return $this->redirectToRoute("home");
+    }
+  }
+
 }

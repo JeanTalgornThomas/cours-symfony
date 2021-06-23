@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+    <img src="/images/boutiques/{{ boutique.id }}.jpg" alt="Lights" style="width:50%">
+    <div class="thumbnail">
+        <p><strong>{{ boutique.nom }}</strong></p>
+        <p>Valeur : {{ boutique.valeurs }}</p>
+        <p>Stock : {{ boutique.stocks}}</p>
+    </div>
+{% endblock %}
