@@ -9,7 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\DonsType;
 use App\Entity\Dons;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * @IsGranted("ROLE_USER")
+ */
 class DonsController extends AbstractController {
 
   public function __construct(EntityManagerInterface $mysql)
