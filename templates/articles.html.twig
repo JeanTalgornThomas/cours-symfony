@@ -4,29 +4,13 @@
 
 {% block body %}
     {% for article in articles %}
-    <div class="row">
-        <div class="col-2">
-            <img src="/images/articles/{{ article.id }}.jpg" alt="Lights" style="width:100%">
-        </div>
-        <div class="col">
-            <div class="thumbnail">
-                <div class="caption">
-                    <a href="{{ path('showOneArticles', {id: article.id}) }}">{{ article.nom }}</a>
-                </div>
+        <div class="card">
+            <img src="/images/articles/{{ article.id }}.jpg" class="card-img-top" alt="{{article.nom}}" style="width:30%"/>
+            <div class="card-body">
+                <a class="card-title" href="{{ path('showOneArticles', {id: article.id}) }}">{{ article.nom }}</a>
+                <!--h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6-->
+                <p class="card-text"><p>{{article.contenu}}</p>
             </div>
         </div>
-    </div>
-</div>
-<!--div class="card" style="width: 18rem;"-->
-<div class="card">
-    <img src="/images/articles/{{ article.id }}.jpg" class="card-img-top" alt="{{article.nom}}">
-    <div class="card-body">
-        <h5 class="card-title">{{article.nom}}</h5>
-        <!--h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6-->
-        <p class="card-text"><p>{{article.contenu}}</p>
-    </div>
-</div>
-<br >
-<br>
-{% endfor %}
+    {% endfor %}
 {% endblock %}
