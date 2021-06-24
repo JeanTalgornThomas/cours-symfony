@@ -14,7 +14,9 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+    <h4> Première fois sur le site?  <a href="{{ path('register') }}">Enregistrez-vous</a> </h4>
+    <br>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Password</label>
