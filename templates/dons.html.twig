@@ -1,14 +1,5 @@
 {% extends "base.html.twig" %}
 {% block title %}Faire un don{% endblock %}
 {% block body %}
-{{form_start(form)}}
-<br >
-<form>
-  <div class="form-group">
-    {{form_row(form.montants, {'attr': {'placeholder': 'Combien souhaitez-vous donner à la SPA ? '}})}}
-  </div>
-  <br >
-  <button type="submit">Envoyer</button>
-</form>
-{{form_end(form)}}
+{{ form(form) }}
 {% endblock %}

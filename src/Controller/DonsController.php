@@ -5,15 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 use App\Form\DonsType;
 use App\Entity\Dons;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
- * @IsGranted("ROLE_USER")
- */
 class DonsController extends AbstractController {
 
   public function __construct(EntityManagerInterface $mysql)
@@ -24,26 +21,30 @@ class DonsController extends AbstractController {
   /**
    * @Route("/addDons", name="addDons")
   */
-  function addDons(Request $request) {
+  function addDons(Request $request): Response {
     date_default_timezone_set('Europe/Paris');
+    
+    $dons = new Dons();
 
-    $resultat = new Dons();
+    $form = $this->createForm(DonsType::class, $dons);
 
-    $form = $this->createForm(DonsType::class, $resultat);
     $form->handleRequest($request);
-
     if ($form->isSubmitted() && $form->isValid()) {
-        $resultat = $form->getData();
 
-        $this->addFlash(
-          'Merci pour votre don!'
-        );
-        return $this->redirectToRoute("home");
+        $dons = $form->getData();
+        $dons->setMontants($dons->getMontants());
+        $dons->setDate(new \DateTime());
+        $dons->setIdUtilisateurs(1);
+            
+        $this->mysql->persist($dons);
+        $this->mysql->flush();
+
+        return $this->redirectToRoute('home');
     }
 
-    return $this->render("dons.html.twig", [
-        'form' => $form->createView()
-    ]);    
+    return $this->render('dons.html.twig', [
+        'form' => $form->createView(),
+    ]);
   }
 
 }
