@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Votre panier!{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Votre panier</h1>
+</div>
+{% if items | length > 0 %}
+<br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Valeur</th>
+            <th>Stock</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{item.product.nom}}</td>
+            <td>{{item.product.valeurs}}€</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.product.valeurs*item.quantity}}€</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total : </td>
+            <td>{{ total }}€</td>
+        </tr>
+    </tfoot>
+</table>
+{% else %}
+    <p> votre panier est vide ! </p>
+{% endif %}
+
+<button><a class="nav-link" href={{path('showBoutiques')}}>Reprendre les achats</a></button>
+<button><a class="nav-link" href="#">Payer</a></button>
+{% endblock %}

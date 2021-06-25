@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h3> Nos dernier animaux </h3>
+<div class="row">
+  {% for animal in animaux %}
+      <div class="col-2">
+          <div class="thumbnail">
+              <a href="{{ path('showOneAnimaux', {id: animal.id}) }}">
+                  <img src="/images/animaux/{{animal.id}}.jpg" alt="{{animal.nom}}" style="width:100%">
+                  <div class="caption text-center">
+                      <p>{{ animal.nom }}</p>
+                      <p>{{ animal.age }} ans</p>
+                  </div>
+              </a>
+          </div>
+      </div>
+  {% endfor %}
+</div>
+<h3> Nos dernier articles </h3>
+<div class="row">
+  {% for article in articles %}
+      <div class="col-2">
+          <div class="thumbnail">
+              <a href="{{ path('showOneArticles', {id: article.id}) }}">
+                  <img src="/images/articles/{{article.id}}.jpg" alt="{{article.nom}}" style="width:100%">
+                  <div class="caption text-center">
+                      <p>{{ article.nom }}</p>
+                  </div>
+              </a>
+          </div>
+      </div>
+  {% endfor %}
+</div>
+{% endblock %}

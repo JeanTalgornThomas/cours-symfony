@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptez nous!{% endblock %}
+
+{% block body %}
+
+{% for res in animaux %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="thumbnail">
+            <a href="">
+                <img src="https://resize2.prod.docfr.doc-media.fr/rcrop/480,280,center-middle/img/var/doctissimo/storage/images/fr/www/animaux/chat/choisir-chat/evolution-de-la-personnalite-d-un-chaton/709639-4-fre-FR/evolution-de-la-personnalite-d-un-chaton.jpg" alt="Lights" style="width:100%">
+                <div class="caption">
+                    <p> {{res.nom}}</p>
+                </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

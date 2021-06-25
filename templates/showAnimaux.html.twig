@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Animal{% endblock %}
+
+{% block body %}
+    <img src="/images/animaux/{{ animal.id }}.jpg" alt="Lights" style="width:50%">
+    <div class="thumbnail">
+        <p><strong>{{ animal.nom }}</strong></p>
+        <p>Type : {{ animal.type }}</p>
+        <p>Race : {{ animal.race}}</p>
+        <p>Age : {{ animal.age}}</p>
+        <p>Poids : {{ animal.poids}}</p>
+    </div>
+    {% if is_granted("ROLE_USER") %}
+        <a href="{{ path('adopter', {id: animal.id}) }}">Adopter</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <img src="/images/articles/{{ articles.id }}.jpg" alt="Lights" style="width:50%">
+    <div class="thumbnail">
+        <p><strong>{{ articles.nom }}</strong></p>
+        <p>{{ articles.contenu }}</p>
+    </div>
+{% endblock %}

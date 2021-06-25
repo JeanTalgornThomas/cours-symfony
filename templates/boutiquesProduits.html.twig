@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique : Produits{% endblock %}
+
+{% block body %}
+<div class="row">
+    {% for produit in boutiquesProduits %}
+        <div class="col-2">
+            <div class="thumbnail">
+                <a href="{{ path('showOneBoutiques', {id: produit.id}) }}">
+                    <img src="/images/boutiques/{{ produit.id }}.jpg" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p>{{ produit.nom }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

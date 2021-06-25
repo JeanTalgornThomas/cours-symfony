@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+    <img src="/images/boutiques/{{ boutique.id }}.jpg" alt="Lights" style="width:50%">
+    <div class="thumbnail">
+        <p><strong>{{ boutique.nom }}</strong></p>
+        <p>Valeur : {{ boutique.valeurs }}</p>
+        <p>Stock : {{ boutique.stocks}}</p>
+        <a href="{{ path('Addpanier', {'id': boutique.id } ) }}" class="btn btn-success">
+            <i class="fas fa-shopping-cart mr-1"></i>
+            Ajouter
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Votre pannier!{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Votre panier</h1>
+</div>
+{% if items | length > 0 %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Valeur</th>
+            <th>Stock</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{item.boutiques.nom}}</td>
+            <td>{{item.boutiques.valeur}}</td>
+            <td>{{item.boutiques.stock}}</td>
+            <td>{{item.boutiques.valeur *  item.boutiques.stock }}</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+{% else %}
+    <p> votre panier est vide ! </p>
+{% endif %}
+{% endblock %}

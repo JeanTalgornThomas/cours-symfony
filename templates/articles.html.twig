@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+    {% for article in articles %}
+        <div class="card">
+            <img src="/images/articles/{{ article.id }}.jpg" class="card-img-top" alt="{{article.nom}}" style="width:30%"/>
+            <div class="card-body">
+                <a class="card-title" href="{{ path('showOneArticles', {id: article.id}) }}">{{ article.nom }}</a>
+                <!--h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6-->
+                <p class="card-text"><p>{{article.contenu}}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
