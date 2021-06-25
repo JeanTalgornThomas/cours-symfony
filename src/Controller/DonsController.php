@@ -34,6 +34,7 @@ class DonsController extends AbstractController {
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
 
+        // Ajout du dons dans la bdd
         $dons = $form->getData();
         $dons->setMontants($dons->getMontants());
         $dons->setDate(new \DateTime());
@@ -41,6 +42,7 @@ class DonsController extends AbstractController {
         $this->mysql->persist($dons);
         $this->mysql->flush();
 
+        // Requête pour récupérer les informations de l'utilisateur
         try
         {
           $resultatUtilisateur = $this->mysql
@@ -52,6 +54,7 @@ class DonsController extends AbstractController {
           return $resultatUtilisateur = false;
         }
 
+        // Envoie de l'email de dons
         $message = (new TemplatedEmail())
         ->from('intranet-noreply@nodarius.fr')
         ->to($resultatUtilisateur->getEmail())

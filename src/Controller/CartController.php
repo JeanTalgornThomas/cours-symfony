@@ -16,28 +16,6 @@ class CartController extends AbstractController {
     $this->mysql = $mysql;
   }
 
-
-  // /**
-  //  * @Route("/panier", name="panier")
-  // */
-  // public function index(SessionInterface $session) {
-
-  //   $panier = $session->get('panier',[]);
-
-  //   $panierData = [];
-
-  //   foreach($panier as $id => $quant) {
-  //     $panierData[] = [
-  //       'product' => $this->mysql->getRepository(Boutiques::class)->findOneBy(['id' => $id]),
-  //       'quantity' => $quant
-  //     ];
-  //   }
-
-  //   return $this->render('panier/index.html.twig', [
-  //     'items' => $panierData
-  //   ]);
-  // }
-
   /**
    * @Route("/panier/add/{id}", name="Addpanier")
   */

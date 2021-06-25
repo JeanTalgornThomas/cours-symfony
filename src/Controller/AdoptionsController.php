@@ -25,6 +25,8 @@ class AdoptionsController extends AbstractController {
    * @Route("/adopter/{id}", name="adopter")
   */
   function adopter($id, MailerInterface $mailer) {
+
+    // Ajout de l'adoption dans la bdd
     $dons = new Adoptions();
     $dons->setIdAnimaux($id);
     $dons->setDate(new \DateTime());
@@ -32,6 +34,7 @@ class AdoptionsController extends AbstractController {
     $this->mysql->persist($dons);
     $this->mysql->flush();
 
+    // Requête pour récupérer les informations de l'utilisateur
     try
     {
       $resultatUtilisateur = $this->mysql
@@ -43,6 +46,7 @@ class AdoptionsController extends AbstractController {
       return $resultatUtilisateur = false;
     }
 
+    // Requête pour récupérer les informations de l'animal
     try
     {
       $resultatAnimal = $this->mysql
@@ -56,6 +60,7 @@ class AdoptionsController extends AbstractController {
 
     if ($resultatUtilisateur != false && $resultatAnimal != false)
     {
+      // Envoie de l'email d'adoptions
       $message = (new TemplatedEmail())
       ->from('intranet-noreply@nodarius.fr')
       ->to($resultatUtilisateur->getEmail())
