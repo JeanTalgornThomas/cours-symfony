@@ -11,4 +11,7 @@
         <p>Age : {{ animal.age}}</p>
         <p>Poids : {{ animal.poids}}</p>
     </div>
+    {% if is_granted("ROLE_USER") %}
+        <a href="{{ path('adopter', {id: animal.id}) }}">Adopter</a>
+    {% endif %}
 {% endblock %}
