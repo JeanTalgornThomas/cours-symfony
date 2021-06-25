@@ -7,6 +7,7 @@
     <h1>Votre panier</h1>
 </div>
 {% if items | length > 0 %}
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -19,16 +20,25 @@
     <tbody>
         {% for item in items %}
         <tr>
-            <td>{{item.boutiques.nom}}</td>
-            <td>{{item.boutiques.valeur}}</td>
-            <td>{{item.boutiques.stock}}</td>
-            <td>{{item.boutiques.valeur *  item.boutiques.stock }}</td>
+            <td>{{item.product.nom}}</td>
+            <td>{{item.product.valeurs}}€</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.product.valeurs*item.quantity}}€</td>
         </tr>
         {% endfor %}
-        
     </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total : </td>
+            <td>{{ total }}</td>
+        </tr>
+    </tfoot>
 </table>
 {% else %}
     <p> votre panier est vide ! </p>
 {% endif %}
+
+<button><a class="nav-link" href={{path('showBoutiques')}}>Reprendre les achats</a></button>
+<button><a class="nav-link" href="#">Payer</a></button>
 {% endblock %}

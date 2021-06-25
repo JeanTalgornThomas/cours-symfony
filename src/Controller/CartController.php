@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-use App\Repository\BoutiquesRepository;
+use App\Entity\Boutiques;
 
 class CartController extends AbstractController {
 
@@ -17,26 +17,26 @@ class CartController extends AbstractController {
   }
 
 
-  /**
-   * @Route("/panier", name="panier")
-  */
-  public function index(SessionInterface $session) {
+  // /**
+  //  * @Route("/panier", name="panier")
+  // */
+  // public function index(SessionInterface $session) {
 
-    $panier = $session->get('panier',[]);
+  //   $panier = $session->get('panier',[]);
 
-    $panierData = [];
+  //   $panierData = [];
 
-    foreach($panier as $id => $quant) {
-      $panierData[] = [
-        'product' => $this->mysql->getRepository(Boutiques::class)->findOneBy(['id' => $id]),
-        'quantity' => $quant
-      ];
-    }
+  //   foreach($panier as $id => $quant) {
+  //     $panierData[] = [
+  //       'product' => $this->mysql->getRepository(Boutiques::class)->findOneBy(['id' => $id]),
+  //       'quantity' => $quant
+  //     ];
+  //   }
 
-    return $this->render('panier/index.html.twig', [
-      'items' => $panierData
-    ]);
-  }
+  //   return $this->render('panier/index.html.twig', [
+  //     'items' => $panierData
+  //   ]);
+  // }
 
   /**
    * @Route("/panier/add/{id}", name="Addpanier")
@@ -50,9 +50,28 @@ class CartController extends AbstractController {
     } else {
       $panier[$id] = 1;
     }
+
+    $panierData = [];
+
+    foreach($panier as $id => $quant) {
+      $panierData[] = [
+        'product' => $this->mysql->getRepository(Boutiques::class)->findOneBy(['id' => $id]),
+        'quantity' => $quant
+      ];
+    }
+
+    $total = 0;
+
+    foreach($panierData as $item) {
+      $totalItem = $item['product']->getValeurs() * $item['quantity'];
+      $total += $totalItem;
+    }
+
+    dump($panierData);
     $session->set('panier',$panier);
     return $this->render('panier/add.html.twig', [
-      'items' => $panier
+      'items' => $panierData,
+      'total' => $total
     ]);
 
   }
