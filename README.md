@@ -1,5 +1,7 @@
 # Symfony Groupe 4
 
+Si le main ne fonctionne pas, regarder la branch "backend".
+
 # Axes d'amélioration
 
 * Strip for paiement, (https://www.codevate.com/blog/how-to-accept-payments-with-stripe-in-symfony-web-apps)
